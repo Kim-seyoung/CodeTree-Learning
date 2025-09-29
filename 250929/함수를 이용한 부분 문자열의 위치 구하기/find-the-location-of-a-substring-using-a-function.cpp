@@ -17,7 +17,10 @@ int isSubStr() {
                 break;
             }
         }
-        if(exist) idx = i;
+        if(exist) 
+        {
+            idx = i; break;
+        }
     }
     return idx;
 }
