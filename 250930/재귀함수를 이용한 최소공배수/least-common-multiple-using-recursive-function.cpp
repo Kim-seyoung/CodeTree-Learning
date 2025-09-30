@@ -24,8 +24,7 @@ int Icm(int n, int m) {
 
 // 재귀 함수
 int IcmArray(int n) {
-    if(n == 2)
-        return Icm( arr[0], arr[1] );
+    if (n == 1) return arr[0];            // 종료 조건
     return Icm( IcmArray(n-1), arr[n-1] );
 } 
 
