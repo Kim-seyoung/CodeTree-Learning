@@ -3,13 +3,21 @@
 using namespace std;
 
 bool Carry(int a, int b, int c) {
-    while(1) {
-        if((a % 10 + b % 10 + c % 10) >= 10) return true;
-        
-        a /= 10; b /= 10; c /= 10;
-        if(a == 0 && b ==0 && c == 0)
-        break;
-    }
+    //일의 자리에서 carry가 발생하는 경우
+    if(a % 10 + b % 10 + c % 10 >= 10)
+        return true;
+    
+    //십의 자리에서 carry가 발생하는 경우
+    if(a % 100 / 10 + b % 100 / 10 + c % 100 / 10 >= 10)
+        return true;
+    
+    //백의 자리에서 carry가 발생하는 경우
+    if(a % 1000 / 100 + b % 1000 / 100 + c % 1000 / 100 >= 10)
+        return true;
+    
+    //천의 자리에서 carry가 발생하는 경우
+    if(a % 10000 / 1000 + b % 10000 / 1000 + c % 10000 / 1000 >= 10)
+        return true;
     return false;
 }
 
