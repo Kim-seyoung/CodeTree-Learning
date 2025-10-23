@@ -11,7 +11,7 @@ int main() {
             cin >> a[i][j];
     }
 
-    int max_cnt1 = 0; int x, y;
+    int max_cnt1 = -1; int x = -1, y = -1;
     for(int i = 0; i < n; i++) {
         for(int j = 1; j < n-1; j++) {
             int cnt = 0;
@@ -36,7 +36,7 @@ int main() {
     //     cout << endl;
     // }
 
-    int max_cnt2 = 0;
+    int max_cnt2 = -1;
     for(int i = 0; i < n; i++) {
         for(int j = 1; j < n-1; j++) {
             if(a[i][j-1] == 2 || a[i][j] == 2 || a[i][j+1] == 2)
