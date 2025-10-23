@@ -63,6 +63,7 @@ int main() {
     }
     
     cout << win << endl;
-    cout << x+1 << " " << y+1;
+    if(win != 0)
+        cout << x+1 << " " << y+1;
     return 0;
 }
