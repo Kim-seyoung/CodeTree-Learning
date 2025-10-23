@@ -27,7 +27,8 @@ int main() {
             for(int k = 0; k < n; k++) {
                 if(Carry(a[i], a[j], a[k]))
                     continue;
-                max_sum = max(max_sum, a[i] + a[j] + a[k]);
+                else
+                    max_sum = max(max_sum, a[i] + a[j] + a[k]);
             }
         }
     }
