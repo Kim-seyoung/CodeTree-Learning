@@ -1,58 +1,43 @@
 #include <iostream>
 #include <algorithm>
+#include <cstdlib>
+
+#define MAX_N 20
+
 using namespace std;
 
+int n;
+int arr[MAX_N][MAX_N];
+
 int main() {
-    // Please write your code here.
-    int n; cin >> n;
-    int a[n][n];
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) 
-            cin >> a[i][j];
-    }
-
-    int max_cnt1 = -1; int x = -1, y = -1;
-    for(int i = 0; i < n; i++) {
-        for(int j = 1; j < n-1; j++) {
-            int cnt = 0;
-            if(a[i][j-1] == 1) cnt++; 
-            if(a[i][j] == 1) cnt++; 
-            if(a[i][j+1] == 1) cnt++; 
-
-            if(max_cnt1 <= cnt) {
-                max_cnt1 = cnt;
-                x = i; y = j;
+    // 입력
+    cin >> n;
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++)
+            cin >> arr[i][j];
+    
+    // Step 1.
+    // 첫 번째 격자를 놓습니다. (i , j)
+    int max_cnt = 0;
+    for(int i = 0; i < n; i++)
+        // 격자를 벗어나지 않을 범위로만 잡습니다.
+        for(int j = 0; j < n - 2; j++) {
+            // 두 번째 격자를 놓습니다. (k , l)
+            for(int k = 0; k < n; k++) {
+                // 격자를 벗어나지 않을 범위로만 잡습니다.
+                for(int l = 0; l < n - 2; l++) {
+                    // Step2. 두 격자가 겹치는 경우에는 가짓수로 세지 않습니다.
+                    if(i == k && abs(j - l) <= 2)
+                        continue;
+                    
+                    // Step 3. 두 격자가 겹치지 않는 경우에 대해 동전 수를 세어 갱신해줍니다.
+                    int cnt1 = arr[i][j] + arr[i][j + 1] + arr[i][j + 2];
+                    int cnt2 = arr[k][l] + arr[k][l + 1] + arr[k][l + 2];
+                    max_cnt = max(max_cnt, cnt1 + cnt2);
+                }
             }
         }
-    }
-
-    a[x][y-1] = 2;
-    a[x][y] = 2;
-    a[x][y+1] = 2;
-
-    // for(int i = 0; i < n; i++) {
-    //     for(int j = 0; j < n; j++) 
-    //         cout << a[i][j] << " ";
-    //     cout << endl;
-    // }
-
-    int max_cnt2 = -1;
-    for(int i = 0; i < n; i++) {
-        for(int j = 1; j < n-1; j++) {
-            if(a[i][j-1] == 2 || a[i][j] == 2 || a[i][j+1] == 2)
-                continue;
-            
-            int cnt = 0;
-            if(a[i][j-1] == 1) cnt++; 
-            if(a[i][j] == 1) cnt++; 
-            if(a[i][j+1] == 1) cnt++; 
-
-            if(max_cnt2 <= cnt) {
-                max_cnt2 = cnt;
-            }
-        }
-    }
-
-    cout << max_cnt1 + max_cnt2;
+    
+    cout << max_cnt;
     return 0;
 }
