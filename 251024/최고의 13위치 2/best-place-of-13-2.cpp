@@ -19,7 +19,7 @@ int main() {
             if(a[i][j] == 1) cnt++; 
             if(a[i][j+1] == 1) cnt++; 
 
-            if(max_cnt1 < cnt) {
+            if(max_cnt1 <= cnt) {
                 max_cnt1 = cnt;
                 x = i; y = j;
             }
@@ -47,7 +47,7 @@ int main() {
             if(a[i][j] == 1) cnt++; 
             if(a[i][j+1] == 1) cnt++; 
 
-            if(max_cnt2 < cnt) {
+            if(max_cnt2 <= cnt) {
                 max_cnt2 = cnt;
             }
         }
