@@ -3,8 +3,8 @@
 #include <cmath>
 using namespace std;
 
-#define MAX_N 1000
-#define MAX_H 100
+#define MAX_N 100
+#define MAX_H 10000
 
 int main() {
     int n, k;
