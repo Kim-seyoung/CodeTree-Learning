@@ -20,7 +20,7 @@ int main() {
         } else if(ch == 'R') {
             it++;
         } else if(ch == 'D') {
-            l.erase(it);
+            it = l.erase(it);
         } else if(ch == 'P') {
             char a;
             cin >> a;
