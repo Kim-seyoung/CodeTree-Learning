@@ -9,7 +9,10 @@ int main() {
     for(int i = 0; str[i] != '\0'; i++) {
         if(str[i] == '(') s.push(1);
         else if(str[i] == ')') {
-            if(s.empty()) break;
+            if(s.empty()) {
+                cout << "No" << endl;
+                return 0;
+            }
             else s.pop();
         }
     }
