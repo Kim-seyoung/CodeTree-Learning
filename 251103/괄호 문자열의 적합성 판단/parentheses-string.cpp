@@ -4,12 +4,12 @@ using namespace std;
 
 int main() {
     // Please write your code here.
-    stack<int> s; bool ans;
+    stack<int> s; bool ans = false;
     string str; cin >> str;
     for(int i = 0; str[i] != '\0'; i++) {
         if(str[i] == '(') s.push(1);
         else if(str[i] == ')') {
-            if(s.empty()) ans = false;
+            if(s.empty()) break;
             else s.pop();
         }
     }
